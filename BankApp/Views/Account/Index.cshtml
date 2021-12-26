@@ -1,0 +1,60 @@
+﻿@model IEnumerable<BankApp.Models.Bank.Account>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountBalance)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountCreationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AccountUpdatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountBalance)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountCreationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AccountUpdatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerID)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.AccountID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.AccountID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.AccountID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
